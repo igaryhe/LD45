@@ -24,3 +24,6 @@ func _physics_process(delta):
 	if y_velocity > MAX_FALL_SPEED:
 		y_velocity = MAX_FALL_SPEED
 	pass
+
+func _on_finished():
+	$AudioStreamPlayer2D.play()
