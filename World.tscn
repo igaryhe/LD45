@@ -33,7 +33,6 @@ position = Vector2( 1440, 608 )
 scale = Vector2( 3, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="MarginContainer" parent="CanvasLayer" instance=ExtResource( 5 )]
 [connection signal="color_changed" from="Trail" to="CanvasLayer/MarginContainer" method="change_color_indicator"]

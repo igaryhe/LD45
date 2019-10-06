@@ -62,7 +62,7 @@ func _on_finished():
 
 
 func grab_key():
-	key_held += 1
+	keys_held += 1
 
 func get_key_count():
-	return key_held
+	return keys_held
