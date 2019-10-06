@@ -11,14 +11,10 @@ func _on_Deadzone_body_entered(body):
 	if body.get_name() == "Player":
 		Player.respawn()
 
-func _ready():
-	print(audio_stream.stream.get_length())
-	pass
-
 func _physics_process(delta):
 	distance = Player.position.distance_to(position)
-	print(distance)
-	print(timer.wait_time)
+	# print(distance)
+	# print(timer.wait_time)
 
 func _on_Timer_timeout():
 	audio_stream.play()
