@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Heart Beat.wav-828f1fb1aceb2750a6f07f6ec24b6875.sample"
+
+[deps]
+
+source_file="res://res/Heart Beat.wav"
+dest_files=[ "res://.import/Heart Beat.wav-828f1fb1aceb2750a6f07f6ec24b6875.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=true
+edit/loop=false
+compress/mode=0
