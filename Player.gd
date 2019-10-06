@@ -25,12 +25,12 @@ func _ready():
 
 func init_pos():
 	position = Vector2(100, 416)
+	$Sprite.show()
 
 func respawn():
 	$DeathParticles.emitting = true
-	$DeathParticles.restart()
-	#init_pos()
 	$Sprite.hide()
+	$RespawnTimer.start(1)
 
 func _physics_process(delta):
 	
