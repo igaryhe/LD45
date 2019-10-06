@@ -9,9 +9,16 @@ var y_velocity = 0
 
 func _ready():
 	init_pos()
+	$DeathParticles.one_shot = true
 
 func init_pos():
-	position = Vector2(100, 320)
+	position = Vector2(100, 416)
+
+func respawn():
+	$DeathParticles.emitting = true
+	$DeathParticles.restart()
+	#init_pos()
+	$Sprite.hide()
 
 func _physics_process(delta):
 	var dir = 0
