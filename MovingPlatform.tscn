@@ -20,6 +20,8 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Platform"]
 scale = Vector2( 4, 1 )
 texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="Tween" type="Tween" parent="."]
 repeat = true
