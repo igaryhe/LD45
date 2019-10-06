@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Deadzone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://res/Heart Beat.wav" type="AudioStream" id=7]
+[ext_resource path="res://Flag.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -35,12 +36,16 @@ scale = Vector2( 100, 1 )
 position = Vector2( 1440, 608 )
 scale = Vector2( 3, 1 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="GUILayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" parent="CanvasLayer" instance=ExtResource( 6 )]
+[node name="GUI" parent="GUILayer" instance=ExtResource( 6 )]
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-[connection signal="color_changed" from="Trail" to="CanvasLayer/MarginContainer" method="change_color_indicator"]
+
+[node name="Area2D" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1826.39, 483.86 )
+[connection signal="color_changed" from="Trail" to="GUILayer/GUI" method="change_color_indicator"]
+[connection signal="complete" from="Area2D" to="." method="complete"]
