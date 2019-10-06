@@ -57,10 +57,6 @@ func _physics_process(delta):
 		y_velocity = MAX_FALL_SPEED
 	pass
 
-func _on_finished():
-	$AudioStreamPlayer2D.play()
-
-
 func grab_key():
 	keys_held += 1
 
