@@ -7,6 +7,12 @@ const MAX_FALL_SPEED = 1000
 
 var y_velocity = 0
 
+func _ready():
+	init_pos()
+
+func init_pos():
+	position = Vector2(100, 320)
+
 func _physics_process(delta):
 	var dir = 0
 	if Input.is_action_pressed("ui_right"):
