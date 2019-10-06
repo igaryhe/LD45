@@ -5,6 +5,7 @@ func _physics_process(delta):
 	distance = $Player.get_position().distance_to($Enemy.get_position())
 	print(distance)
 	if distance < 300:
-		$Player/AudioStreamPlayer2D.set_pitch_scale(1.2)
+		$Player/AudioStreamPlayer2D.set_pitch_scale(1.8)
 	else:
 		$Player/AudioStreamPlayer2D.set_pitch_scale(1)
+	$Enemy.direction = ($Player.position - $Enemy.position).normalized()
