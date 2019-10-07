@@ -35,6 +35,9 @@ tracks/1/keys = {
 
 [node name="Title" type="CanvasLayer"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_vertical_guides_": [ -448.0 ]
+}
 
 [node name="cont" type="MarginContainer" parent="."]
 margin_right = 1024.0
@@ -46,9 +49,9 @@ custom_constants/margin_bottom = 0
 
 [node name="v" type="VBoxContainer" parent="cont"]
 margin_left = 117.0
-margin_top = 315.0
+margin_top = 164.0
 margin_right = 907.0
-margin_bottom = 452.0
+margin_bottom = 604.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 custom_constants/separation = 40
@@ -61,7 +64,6 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Draw Something"
 
 [node name="v" type="VBoxContainer" parent="cont/v"]
-visible = false
 margin_left = 323.0
 margin_top = 177.0
 margin_right = 466.0
@@ -97,3 +99,5 @@ anims/start = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+[connection signal="pressed" from="cont/v/v/Button2" to="." method="_load_credit"]
+[connection signal="pressed" from="cont/v/v/Button3" to="." method="_quit"]

@@ -9,6 +9,8 @@ const LEVELS = [
 	"res://Level4.tscn",
 	"res://Level5.tscn",
 	"res://Level6.tscn",
+	"res://Level7.tscn",
+	"res://Credits.tscn"
 ]
 
 const START = "res://Title.tscn"

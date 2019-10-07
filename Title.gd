@@ -9,3 +9,9 @@ func _ready():
 	
 	var global = get_node("/root/Global")
 	$cont/v/v/start.connect("pressed", global, "next")
+
+func _load_credit():
+	get_tree().change_scene("res://Credits.tscn")
+
+func _quit():
+	get_tree().quit()
