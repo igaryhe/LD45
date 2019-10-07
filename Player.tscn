@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://res/player.png" type="Texture" id=2]
+[ext_resource path="res://PlayerFSM.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -12,7 +13,7 @@ spread = 180.0
 gravity = Vector3( 0, 500, 0 )
 initial_velocity = 400.0
 initial_velocity_random = 0.3
-angular_velocity = 4.58393e-041
+angular_velocity = 4.58393e-41
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 10.0
@@ -106,4 +107,7 @@ anims/land = SubResource( 4 )
 
 [node name="RespawnTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="StateMachine" type="Node2D" parent="."]
+script = ExtResource( 3 )
 [connection signal="timeout" from="RespawnTimer" to="." method="init_pos"]
