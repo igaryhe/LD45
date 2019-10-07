@@ -65,7 +65,7 @@ custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CircuitCoder
 Dan
-mnmlyw"
+Yang"
 align = 1
 
 [node name="GD" type="Label" parent="MarginContainer/VBoxContainer"]
