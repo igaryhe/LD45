@@ -22,6 +22,7 @@ var move_held_for = 0
 var move_dir = 0
 var key_held = false
 var disabled = false
+var zoom_factor = 1
 
 signal death
 signal key_state_changed
@@ -129,3 +130,13 @@ func _on_timer_timeout():
 
 func _on_hb_finished():
 	hb_timer.start(interval)
+
+func _input(event):
+	# zoom in
+	if event.is_action_pressed("zoom_out"):
+		zoom_factor += 0.2
+		$Camera2D.set_zoom(Vector2(zoom_factor, zoom_factor))
+    # zoom out
+	if event.is_action_pressed("zoom_in"):
+		zoom_factor -= 0.2
+		$Camera2D.set_zoom(Vector2(zoom_factor, zoom_factor))
