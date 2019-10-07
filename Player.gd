@@ -64,7 +64,7 @@ func apply_jump(delta):
 	grounded = is_on_floor()
 
 	if stuck and !was_stuck:
-		audio_player.play()
+		$WallSound.play()
 	if grounded:
 		air_frame = 0
 	else:
