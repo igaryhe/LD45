@@ -53,6 +53,7 @@ func _enter_state(new_state, old_state):
 			parent.jump_sound.play()
 		states.death:
 			emit_signal('death')
+			parent.death_sound.play()
 			parent.sprite.hide()
 			parent.particles.emitting = true
 			parent.respawn_timer.start(1)

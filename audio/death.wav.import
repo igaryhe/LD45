@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/hit the wall.wav-1880a33829cc68ace86d9b1a9ff0a967.sample"
+path="res://.import/death.wav-081f95a37f237b6f3ceb7246d5521f75.sample"
 
 [deps]
 
-source_file="res://audio/hit the wall.wav"
-dest_files=[ "res://.import/hit the wall.wav-1880a33829cc68ace86d9b1a9ff0a967.sample" ]
+source_file="res://audio/death.wav"
+dest_files=[ "res://.import/death.wav-081f95a37f237b6f3ceb7246d5521f75.sample" ]
 
 [params]
 
