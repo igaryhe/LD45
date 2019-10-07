@@ -46,14 +46,11 @@ autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-<<<<<<< HEAD
 [connection signal="color_changed" from="Trail" to="CanvasLayer/MarginContainer" method="change_color_indicator"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
-=======
 
 [node name="Area2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1826.39, 483.86 )
 [connection signal="color_changed" from="Trail" to="GUILayer/GUI" method="change_color_indicator"]
 [connection signal="complete" from="Area2D" to="." method="complete"]
->>>>>>> 4d5eaf06dc581249bfc729e69f3d1f301a2ecd46
