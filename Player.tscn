@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://res/player.png" type="Texture" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://audio/jump.ogg" type="AudioStream" id=4]
 [ext_resource path="res://audio/hit the wall.wav" type="AudioStream" id=5]
 [ext_resource path="res://audio/hit the door.wav" type="AudioStream" id=6]
-[ext_resource path="res://audio/Heart Beat.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/Open door.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/Heart Beat.wav" type="AudioStream" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -122,8 +123,11 @@ stream = ExtResource( 5 )
 [node name="DoorSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
-[node name="HeartBeat" type="AudioStreamPlayer" parent="."]
+[node name="DoorOpen" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="HeartBeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 autoplay = true
 
 [node name="Timer" type="Timer" parent="."]

@@ -94,8 +94,11 @@ func apply_jump(delta):
 	if stuck and !was_stuck:
 		if !stuck_on_door:
 			$WallSound.play()
-		elif !door_opened:
+		else:
 			$DoorSound.play()
+	
+	if door_opened:
+		$DoorOpen.play()
 	if grounded:
 		air_frame = 0
 	else:
