@@ -13,10 +13,11 @@ var grounded
 
 var move_held_for = 0
 var move_dir = 0
-var keys_held = 0
+var key_held = false
 var disabled = false
 
 signal death
+signal key_state_changed
 
 onready var anim_player = $AnimationPlayer
 onready var audio_player = $AudioStreamPlayer
@@ -72,10 +73,15 @@ func apply_jump(delta):
 		velocity.y = MAX_FALL_SPEED
 
 func grab_key():
-	keys_held += 1
+	key_held = true
+	emit_signal("key_state_changed", key_held)
 
-func get_key_count():
-	return keys_held
+func use_key():
+	if !key_held:
+		return false
+	key_held = false
+	emit_signal("key_state_changed", key_held)
+	return true
 
 func set_disabled(d):
 	disabled = d

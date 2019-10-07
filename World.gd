@@ -33,9 +33,6 @@ func _physics_process(delta):
 	#	interval = ALERT_LOW
 		audio_stream.set_volume_db(-80)
 	interval = ALERT_SCALE * nearest/TRIGGER_DISTANCE
-		
-	print(nearest)
-	print(interval)
 
 func _on_Timer_timeout():
 	audio_stream.play()
