@@ -2,7 +2,7 @@
 
 [ext_resource path="res://MovingPlatform.gd" type="Script" id=1]
 [ext_resource path="res://res/trans.png" type="Texture" id=2]
-[ext_resource path="res://audio/platform.ogg" type="AudioStream" id=3]
+[ext_resource path="res://audio/platform (4).wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 128, 32 )
@@ -27,7 +27,7 @@ region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Platform"]
 stream = ExtResource( 3 )
-volume_db = 2.0
+volume_db = -4.0
 autoplay = true
 attenuation = 5.65685
 
