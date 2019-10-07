@@ -96,6 +96,7 @@ current = true
 [node name="DeathParticles" type="Particles2D" parent="."]
 emitting = false
 amount = 30
+lifetime = 0.8
 one_shot = true
 explosiveness = 0.8
 process_material = SubResource( 2 )

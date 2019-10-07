@@ -9,9 +9,10 @@ func _ready():
 	call_deferred("set_state", states.idle)
 
 func _state_logic(delta):
-	parent.apply_movement()
-	parent.apply_gravity()
-	parent.apply_jump(delta)
+	if state != states.death:
+		parent.apply_movement()
+		parent.apply_gravity()
+		parent.apply_jump(delta)
 	pass
 
 func _get_transition(delta):
@@ -42,13 +43,18 @@ func _get_transition(delta):
 				return states.idle
 			elif parent.velocity.y < 0:
 				return states.jump
-    return null
+	return null
 
 func _enter_state(new_state, old_state):
 	match new_state:
 		states.jump:
 			parent.anim_player.play("jump")
 			parent.audio_player.play()
+		states.death:
+			emit_signal('death')
+			parent.sprite.hide()
+			parent.particles.emitting = true
+			parent.timer.start(1)
 
 func _exit_state(old_state, new_state):
 	if old_state == states.fall and new_state == states.idle:

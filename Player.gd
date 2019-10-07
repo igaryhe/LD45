@@ -20,6 +20,9 @@ signal death
 
 onready var anim_player = $AnimationPlayer
 onready var audio_player = $AudioStreamPlayer
+onready var particles = $DeathParticles
+onready var timer = $RespawnTimer
+onready var sprite = $Sprite
 
 func _ready():
 	init_pos()
@@ -28,14 +31,9 @@ func _ready():
 	$DeathParticles.one_shot = true
 
 func init_pos():
+	$StateMachine.set_state($StateMachine.states.idle)
 	position = Vector2(100, 416)
 	$Sprite.show()
-
-func respawn():
-	emit_signal('death')
-	$DeathParticles.emitting = true
-	$Sprite.hide()
-	$RespawnTimer.start(1)
 
 func apply_gravity():
 	velocity.y += GRAVITY
