@@ -11,7 +11,7 @@
 [ext_resource path="res://audio/Open door.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 31, 31 )
 
 [sub_resource type="ParticlesMaterial" id=2]
 flag_disable_z = true
