@@ -2,7 +2,7 @@ extends Node2D
 
 const TRIGGER_DISTANCE = 300
 const ALERT_HIGH = 0.2
-const ALERT_LOW = 0.5
+const ALERT_LOW = 1
 
 onready var audio_stream = $AudioStreamPlayer
 onready var timer = $Timer
@@ -27,6 +27,9 @@ func _physics_process(delta):
 		interval = ALERT_HIGH
 	elif nearest >= TRIGGER_DISTANCE:
 		interval = ALERT_LOW
+		
+	print(nearest)
+	print(interval)
 
 func _on_Timer_timeout():
 	audio_stream.play()
