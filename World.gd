@@ -9,8 +9,10 @@ onready var timer = $Timer
 
 var interval
 var hazards = []
+var completed = false
 
 func _ready():
+	Player.set_disabled(false)
 	for node in get_children():
 		print(node.get_filename())
 		if node.get_filename() == "res://Deadzone.tscn":
@@ -36,3 +38,9 @@ func _on_Timer_timeout():
 
 func _on_AudioStreamPlayer_finished():
 	timer.start(interval)
+
+func complete():
+	if !completed:
+		completed = true
+		$GUILayer/GUI.success()
+		Player.set_disabled(true)

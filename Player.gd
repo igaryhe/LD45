@@ -17,6 +17,10 @@ var keys_held = 0
 var was_grounded
 var grounded
 
+var disabled = false
+
+signal death
+
 func _ready():
 	init_pos()
 	move_and_slide(Vector2.ZERO, Vector2.UP)
@@ -28,17 +32,18 @@ func init_pos():
 	$Sprite.show()
 
 func respawn():
+	emit_signal('death')
 	$DeathParticles.emitting = true
 	$Sprite.hide()
 	$RespawnTimer.start(1)
 
 func _physics_process(delta):
-	
 	var dir = 0
-	if Input.is_action_pressed("ui_right"):
-		dir += 1
-	if Input.is_action_pressed("ui_left"):
-		dir -= 1
+	if !disabled:
+		if Input.is_action_pressed("ui_right"):
+			dir += 1
+		if Input.is_action_pressed("ui_left"):
+			dir -= 1
 
 	if dir != move_dir:
 		move_dir = dir
@@ -71,3 +76,6 @@ func grab_key():
 
 func get_key_count():
 	return keys_held
+
+func set_disabled(d):
+	disabled = d
