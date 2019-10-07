@@ -6,20 +6,19 @@ const JUMP_SLACK = 0.1
 const GRAVITY = 50
 const MAX_FALL_SPEED = 1000
 
-var y_velocity = 0
 var air_frame = 0
-
-var move_held_for = 0
-var move_dir = 0
-
-var keys_held = 0
-
+var velocity = Vector2.ZERO
 var was_grounded
 var grounded
 
+var move_held_for = 0
+var move_dir = 0
+var keys_held = 0
 var disabled = false
 
 signal death
+
+onready var anim_player = $AnimationPlayer
 
 func _ready():
 	init_pos()
@@ -37,7 +36,10 @@ func respawn():
 	$Sprite.hide()
 	$RespawnTimer.start(1)
 
-func _physics_process(delta):
+func apply_gravity():
+	velocity.y += GRAVITY
+
+func apply_movement():
 	var dir = 0
 	if !disabled:
 		if Input.is_action_pressed("ui_right"):
@@ -51,25 +53,24 @@ func _physics_process(delta):
 	elif move_held_for < 2:
 		move_held_for += 1
 
-	move_and_slide(Vector2(move_dir * MOVE_SPEED[move_held_for], y_velocity), Vector2(0, -1))
+	velocity.x = move_dir * MOVE_SPEED[move_held_for]
+	move_and_slide(velocity, Vector2(0, -1))
 
+func apply_jump(delta):
 	was_grounded = grounded
 	grounded = is_on_floor()
-	if grounded and !was_grounded:
-		$AnimationPlayer.play("land")
+
 	if grounded:
 		air_frame = 0
 	else:
 		air_frame += delta
 
-	y_velocity += GRAVITY
 	if air_frame < JUMP_SLACK and Input.is_action_just_pressed("jump"):
-		$AnimationPlayer.play("jump")
-		y_velocity = -JUMP_FORCE
-	if grounded and y_velocity >= 5:
-		y_velocity = 5
-	if y_velocity > MAX_FALL_SPEED:
-		y_velocity = MAX_FALL_SPEED
+		velocity.y = -JUMP_FORCE
+	if grounded and velocity.y >= 5:
+		velocity.y = 5
+	if velocity.y > MAX_FALL_SPEED:
+		velocity.y = MAX_FALL_SPEED
 
 func grab_key():
 	keys_held += 1
