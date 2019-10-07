@@ -70,7 +70,7 @@ func apply_movement():
 		move_held_for += 1
 
 	velocity.x = move_dir * MOVE_SPEED[move_held_for]
-	move_and_slide(velocity, Vector2(0, -1))
+	move_and_slide(velocity, Vector2.UP)
 
 func apply_jump(delta):
 	was_grounded = grounded
