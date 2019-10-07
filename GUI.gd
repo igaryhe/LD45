@@ -1,5 +1,5 @@
 extends MarginContainer
-
+onready var Player = get_node("/root/World/Player")
 func _ready():
 	Player.connect('death', self, 'death');
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
 [ext_resource path="res://Trail.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://audio/Heart Beat.wav" type="AudioStream" id=7]
 [ext_resource path="res://Flag.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=9]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -47,6 +48,9 @@ stream = ExtResource( 7 )
 
 [node name="Area2D" parent="." instance=ExtResource( 8 )]
 position = Vector2( 2752, 320 )
+
+[node name="Player" parent="." instance=ExtResource( 9 )]
+position = Vector2( 192, 608 )
 [connection signal="color_changed" from="Trail" to="GUILayer/GUI" method="change_color_indicator"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

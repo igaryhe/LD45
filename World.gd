@@ -7,6 +7,7 @@ const ALERT_SCALE = 1
 
 onready var audio_stream = $AudioStreamPlayer
 onready var timer = $Timer
+onready var Player = $Player
 
 var interval
 var hazards = []
