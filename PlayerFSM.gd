@@ -10,6 +10,8 @@ func _ready():
 	call_deferred("set_state", states.idle)
 
 func _state_logic(delta):
+	if state == states.win:
+		parent.apply_win()
 	if state != states.death and state != states.win:
 		parent.apply_movement()
 		parent.apply_gravity()

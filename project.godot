@@ -21,12 +21,13 @@ _global_script_class_icons={
 [application]
 
 config/name="DrawSomething"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Title.tscn"
 config/icon="res://res/icon.png"
 
 [autoload]
 
 BGM="*res://BGM.tscn"
+Global="*res://Global.gd"
 
 [display]
 

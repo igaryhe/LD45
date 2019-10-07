@@ -28,6 +28,7 @@ var zoom_factor = 1
 
 signal death
 signal key_state_changed
+signal proceed_level
 
 onready var anim_player = $AnimationPlayer
 onready var jump_sound = $AudioStreamPlayer
@@ -43,6 +44,7 @@ var hazards = []
 var interval
 
 func _ready():
+	get_node("/root/Global").register_player(self)
 	move_and_slide(Vector2.ZERO, Vector2.UP)
 	grounded = is_on_floor()
 	set_disabled(false)
@@ -111,6 +113,12 @@ func apply_jump(delta):
 		velocity.y = 5
 	if velocity.y > MAX_FALL_SPEED:
 		velocity.y = MAX_FALL_SPEED
+
+func apply_win():
+	if Input.is_action_just_pressed("jump"):
+		var fsm = $StateMachine
+		fsm.set_state(fsm.states.win)
+		get_node("/root/Global").next()
 
 func grab_key():
 	key_held = true
