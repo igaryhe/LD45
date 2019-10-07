@@ -5,6 +5,7 @@ func _ready():
 	add_state("move")
 	add_state("jump")
 	add_state("fall")
+	add_state("death")
 	call_deferred("set_state", states.idle)
 
 func _state_logic(delta):
@@ -47,6 +48,7 @@ func _enter_state(new_state, old_state):
 	match new_state:
 		states.jump:
 			parent.anim_player.play("jump")
+			parent.audio_player.play()
 
 func _exit_state(old_state, new_state):
 	if old_state == states.fall and new_state == states.idle:

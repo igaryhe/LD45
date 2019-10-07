@@ -19,6 +19,7 @@ var disabled = false
 signal death
 
 onready var anim_player = $AnimationPlayer
+onready var audio_player = $AudioStreamPlayer
 
 func _ready():
 	init_pos()
