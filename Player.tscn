@@ -8,7 +8,7 @@
 [ext_resource path="res://audio/Heart Beat.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 31, 31 )
 
 [sub_resource type="ParticlesMaterial" id=2]
 flag_disable_z = true
@@ -123,6 +123,7 @@ stream = ExtResource( 6 )
 autoplay = true
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 [connection signal="timeout" from="RespawnTimer" to="." method="init_pos"]
 [connection signal="finished" from="HeartBeat" to="." method="_on_hb_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
