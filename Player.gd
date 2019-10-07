@@ -10,6 +10,8 @@ var air_frame = 0
 var velocity = Vector2.ZERO
 var was_grounded
 var grounded
+var stuck
+var was_stuck
 
 var move_held_for = 0
 var move_dir = 0
@@ -58,8 +60,12 @@ func apply_movement():
 
 func apply_jump(delta):
 	was_grounded = grounded
+	was_stuck = stuck
+	stuck = is_on_wall()
 	grounded = is_on_floor()
 
+	if stuck and !was_stuck:
+		audio_player.play()
 	if grounded:
 		air_frame = 0
 	else:
