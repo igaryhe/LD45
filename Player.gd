@@ -48,8 +48,15 @@ func _ready():
 	move_and_slide(Vector2.ZERO, Vector2.UP)
 	grounded = is_on_floor()
 	set_disabled(false)
-	for node in get_node("..").get_children():
-		if node.get_filename() == "res://Deadzone.tscn":
+	setup_hazards(get_node("..").get_children())
+	print(hazards)
+
+func setup_hazards(children):
+	print(children)
+	for node in children:
+		if node.get_filename() == "":
+			setup_hazards(node.get_children())
+		elif node.get_filename() == "res://Deadzone.tscn":
 			hazards.push_back(node)
 
 func init_pos():
