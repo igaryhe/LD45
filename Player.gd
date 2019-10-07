@@ -31,6 +31,7 @@ signal key_state_changed
 
 onready var anim_player = $AnimationPlayer
 onready var jump_sound = $AudioStreamPlayer
+onready var death_sound = $DeathSound
 onready var particles = $DeathParticles
 onready var respawn_timer = $RespawnTimer
 onready var sprite = $Sprite
