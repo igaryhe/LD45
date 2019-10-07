@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Title.gd" type="Script" id=1]
 [ext_resource path="res://res/title_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://res/menu_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://audio/start.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "start"
-length = 6.0
+length = 8.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("cont/v/Label:text")
 tracks/0/interp = 1
@@ -26,7 +27,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 6 ),
+"times": PoolRealArray( 0, 8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -90,3 +91,6 @@ text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/start = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
