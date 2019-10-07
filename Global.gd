@@ -5,11 +5,11 @@ signal level_updated
 const LEVELS = [
 	"res://Level1.tscn",
 	"res://Level2.tscn",
-	"res://Level3.tscn",
-	"res://Level4.tscn",
 	"res://Level5.tscn",
 	"res://Level6.tscn",
+	"res://Level3.tscn",
 	"res://Level7.tscn",
+	"res://Level4.tscn",
 	"res://Credits.tscn"
 ]
 
