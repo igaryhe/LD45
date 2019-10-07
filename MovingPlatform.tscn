@@ -27,6 +27,7 @@ region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Platform"]
 stream = ExtResource( 3 )
+volume_db = -4.0
 autoplay = true
 attenuation = 5.65685
 
