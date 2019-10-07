@@ -95,6 +95,10 @@ func apply_movement():
 					door_opened = true
 					collision.collider.annihilate()
 
+func win():
+	$StateMachine.set_state($StateMachine.states.win)
+	$DoorOpen.play()
+
 func apply_jump(delta):
 	was_grounded = grounded
 	was_stuck = stuck
@@ -106,7 +110,6 @@ func apply_jump(delta):
 			$WallSound.play()
 		else:
 			$DoorSound.play()
-	
 	if door_opened:
 		$DoorOpen.play()
 	if grounded:

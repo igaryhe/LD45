@@ -5,7 +5,6 @@ signal complete
 func collide(body):
 	if body.get_name() == "Player":
 		print("Finish")
-		var fsm = get_node("/root/Global").get_player().get_node("StateMachine")
-		fsm.set_state(fsm.states.win)
+		get_node("/root/Global").get_player().win()
 		var gui = get_tree().get_current_scene().get_node("Draw")
 		gui.complete()
