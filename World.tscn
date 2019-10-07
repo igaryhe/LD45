@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://MovingPlatform.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Deadzone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Draw.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Key.tscn" type="PackedScene" id=8]
 
 [node name="World" type="Node2D"]
 
@@ -38,4 +40,10 @@ position = Vector2( 928, 736 )
 scale = Vector2( 3, 1 )
 
 [node name="Draw" parent="." instance=ExtResource( 6 )]
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 7 )]
+position = Vector2( 575.528, 576.481 )
+
+[node name="Key" parent="." instance=ExtResource( 8 )]
+position = Vector2( 762.32, 609.733 )
 [connection signal="complete" from="Flag" to="Draw" method="complete"]
