@@ -1,6 +1,6 @@
 extends Node2D
 
-const TRIGGER_DISTANCE = 300
+const TRIGGER_DISTANCE = 500
 const ALERT_HIGH = 0.2
 const ALERT_LOW = 1
 const ALERT_SCALE = 0.5
@@ -26,10 +26,12 @@ func _physics_process(delta):
 		if dist < nearest:
 			nearest = dist
 	
-	#if nearest < TRIGGER_DISTANCE:
+	if nearest < TRIGGER_DISTANCE:
 	#	interval = ALERT_HIGH
-	#elif nearest >= TRIGGER_DISTANCE:
+		audio_stream.set_volume_db(0)
+	elif nearest >= TRIGGER_DISTANCE:
 	#	interval = ALERT_LOW
+		audio_stream.set_volume_db(-80)
 	interval = ALERT_SCALE * nearest/TRIGGER_DISTANCE
 		
 	print(nearest)
