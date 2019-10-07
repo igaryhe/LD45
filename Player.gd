@@ -17,6 +17,7 @@ var was_grounded
 var grounded
 var stuck
 var was_stuck
+var stuck_on_door
 
 var move_held_for = 0
 var move_dir = 0
@@ -72,6 +73,15 @@ func apply_movement():
 	velocity.x = move_dir * MOVE_SPEED[move_held_for]
 	move_and_slide(velocity, Vector2(0, -1))
 
+	stuck_on_door = false
+	for i in range(get_slide_count()):
+		var collision = get_slide_collision(i)
+		if collision.collider is Node2D:
+			if collision.collider.get_filename() == "res://Door.tscn":
+				stuck_on_door = true
+				if use_key():
+					collision.collider.annihilate()
+
 func apply_jump(delta):
 	was_grounded = grounded
 	was_stuck = stuck
@@ -79,7 +89,8 @@ func apply_jump(delta):
 	grounded = is_on_floor()
 
 	if stuck and !was_stuck:
-		$WallSound.play()
+		if !stuck_on_door:
+			$WallSound.play()
 	if grounded:
 		air_frame = 0
 	else:
