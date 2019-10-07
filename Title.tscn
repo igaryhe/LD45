@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="Title" type="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 768.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
