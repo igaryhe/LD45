@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://res/player.png" type="Texture" id=2]
 [ext_resource path="res://PlayerFSM.gd" type="Script" id=3]
 [ext_resource path="res://audio/jump.ogg" type="AudioStream" id=4]
 [ext_resource path="res://audio/hit the wall.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/Heart Beat.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -93,6 +94,8 @@ __meta__ = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+drag_margin_top = 0.4
+drag_margin_bottom = 0.4
 
 [node name="DeathParticles" type="Particles2D" parent="."]
 emitting = false
@@ -117,4 +120,12 @@ stream = ExtResource( 4 )
 
 [node name="WallSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+
+[node name="HeartBeat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
 [connection signal="timeout" from="RespawnTimer" to="." method="init_pos"]
+[connection signal="finished" from="HeartBeat" to="." method="_on_hb_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

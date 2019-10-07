@@ -6,6 +6,11 @@ const JUMP_SLACK = 0.1
 const GRAVITY = 50
 const MAX_FALL_SPEED = 1000
 
+const TRIGGER_DISTANCE = 600
+const ALERT_HIGH = 0.2
+const ALERT_LOW = 1
+const ALERT_SCALE = 1
+
 var air_frame = 0
 var velocity = Vector2.ZERO
 var was_grounded
@@ -22,20 +27,28 @@ signal death
 signal key_state_changed
 
 onready var anim_player = $AnimationPlayer
-onready var audio_player = $AudioStreamPlayer
+onready var jump_sound = $AudioStreamPlayer
 onready var particles = $DeathParticles
-onready var timer = $RespawnTimer
+onready var respawn_timer = $RespawnTimer
 onready var sprite = $Sprite
+onready var hb = $HeartBeat
+onready var spawn = position
+onready var hb_timer = $Timer
+
+var hazards = []
+var interval
 
 func _ready():
-	init_pos()
 	move_and_slide(Vector2.ZERO, Vector2.UP)
 	grounded = is_on_floor()
-	$DeathParticles.one_shot = true
+	set_disabled(false)
+	for node in get_node("..").get_children():
+		if node.get_filename() == "res://Deadzone.tscn":
+			hazards.push_back(node)
 
 func init_pos():
 	$StateMachine.set_state($StateMachine.states.idle)
-	position = Vector2(100, 416)
+	position = spawn
 	$Sprite.show()
 
 func apply_gravity():
@@ -91,3 +104,28 @@ func use_key():
 
 func set_disabled(d):
 	disabled = d
+
+func _heart_beat():
+	var nearest = INF
+	for node in hazards:
+		var dist = position.distance_to(node.get_position()) 
+		if dist < nearest:
+			nearest = dist
+	
+	if nearest < TRIGGER_DISTANCE:
+	#	interval = ALERT_HIGH
+		hb.set_volume_db(0)
+	elif nearest >= TRIGGER_DISTANCE:
+	#	interval = ALERT_LOW
+		hb.set_volume_db(-80)
+	interval = ALERT_SCALE * nearest / TRIGGER_DISTANCE
+	pass
+
+func _physics_process(delta):
+	_heart_beat()
+
+func _on_timer_timeout():
+	hb.play()
+
+func _on_hb_finished():
+	hb_timer.start(interval)

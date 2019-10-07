@@ -6,10 +6,11 @@ func _ready():
 	add_state("jump")
 	add_state("fall")
 	add_state("death")
+	add_state("win")
 	call_deferred("set_state", states.idle)
 
 func _state_logic(delta):
-	if state != states.death:
+	if state != states.death and state != states.win:
 		parent.apply_movement()
 		parent.apply_gravity()
 		parent.apply_jump(delta)
@@ -49,12 +50,12 @@ func _enter_state(new_state, old_state):
 	match new_state:
 		states.jump:
 			parent.anim_player.play("jump")
-			parent.audio_player.play()
+			parent.jump_sound.play()
 		states.death:
 			emit_signal('death')
 			parent.sprite.hide()
 			parent.particles.emitting = true
-			parent.timer.start(1)
+			parent.respawn_timer.start(1)
 
 func _exit_state(old_state, new_state):
 	if old_state == states.fall and new_state == states.idle:
